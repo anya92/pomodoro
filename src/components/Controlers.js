@@ -1,14 +1,25 @@
 import React from 'react';
+import styled from 'styled-components';
 
-const Controlers = ({ start, pause, stop, startTimer, pauseTimer, stopTimer }) => {
+const Button = styled.button`
+  border: none;
+  font-family: 'Roboto';
+  color: crimson;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 10px;
+  background-color: transparent;
+`;
+
+const Controlers = ({ start, pause, startTimer, pauseTimer, stopTimer }) => {
   return (
-    <div>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
       {
         !start
-        ? <button onClick={() => startTimer()}>Start</button>
+        ? <Button onClick={() => startTimer()}>Start</Button>
         : <div>
-            <button onClick={() => pauseTimer()}>Pause</button>
-            <button onClick={() => stopTimer()}>Stop</button>
+            <Button onClick={() => pauseTimer()}>Pause</Button>
+            <Button onClick={() => stopTimer()}>Stop</Button>
           </div>
       }
     </div>

@@ -11,18 +11,23 @@ const formatTime = timeInSeconds => {
   return `${hours ? hours + ':' : ''}${minutes}:${seconds}`;
 }
 
-const Clock = ({ timeRemain, workTime }) => {
+const Clock = ({ timeLeft, workTime, work, stopTime }) => {
   return (
-    <div className="clock">
+    <div style={{ display: `${stopTime ? 'none' : 'block'}`, textAlign: 'center' }} >
       <svg width="300" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
         <g transform="translate(110, 110)">
-          <circle r="100" className="clock-base" fill="none" stroke="lightgreen" strokeWidth="10px" />
+          <circle r="100" className="clock-base" fill="none" stroke="white" strokeWidth="10px" />
           <g transform="rotate(-90)">
             <circle r="100" className="clock-progress" fill="none" stroke="crimson" strokeWidth="10px" style={{transition: 'stroke-dashoffset .5s'}} />
           </g>
           <g>
             <circle r="90" fill="crimson" />
-            <text textAnchor="middle" fill="white" fontSize="30px" dy="10px">{formatTime(timeRemain || workTime * 60)}</text>
+            <text textAnchor="middle" fill="white" fontSize="1rem" dy="-1.6rem">
+              { work ? 'praca' : 'przerwa' }
+            </text>
+            <text textAnchor="middle" fill="white" fontSize="2.5rem" dy="1rem">
+              {formatTime(timeLeft || workTime * 60)}
+            </text>
           </g>
         </g>
       </svg>
