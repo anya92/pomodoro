@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Clock = () => {
+const Clock = ({ workTime }) => {
   return (
     <div className="clock">
       <svg width="300" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
@@ -11,7 +11,7 @@ const Clock = () => {
           </g>
           <g>
             <circle r="90" fill="crimson" />
-            <text textAnchor="middle" fill="white" fontSize="30px" dy="10px">25:00</text>
+            <text textAnchor="middle" fill="white" fontSize="30px" dy="10px">{workTime}:00</text>
           </g>
         </g>
       </svg>
