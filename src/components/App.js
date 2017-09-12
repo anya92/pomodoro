@@ -116,17 +116,16 @@ class App extends Component {
             changeWorkTime={this.changeWorkTime}
             breakTime={this.state.breakTime}
             changeBreakTime={this.changeBreakTime}
-            stopTime={this.state.stop}
+            stop={this.state.stop}
           />
           <Clock 
             workTime={this.state.workTime}
             timeLeft={this.state.timeLeft}
             work={this.state.work}
-            stopTime={this.state.stop}
+            stop={this.state.stop}
           />
           <Controlers 
             start={this.state.start}
-            pause={this.state.pause}
             startTimer={this.startTimer}
             pauseTimer={this.pauseTimer}
             stopTimer={this.stopTimer}

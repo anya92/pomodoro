@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const SettingsDiv = styled.div`
-  display: ${props => props.stopTime ? 'block' : 'none'};
+  display: ${props => props.stop ? 'block' : 'none'};
   margin-top: 20px;
 `;
 
@@ -51,9 +52,9 @@ const Input = styled.input`
   }
 `;
 
-const Settings = ({ workTime, changeWorkTime, breakTime, changeBreakTime, stopTime }) => {
+const Settings = ({ workTime, changeWorkTime, breakTime, changeBreakTime, stop }) => {
   return (
-    <SettingsDiv stopTime={stopTime}>
+    <SettingsDiv stop={stop}>
       <Title>Ustawienia</Title>
       <Label>Czas pracy: <span>{ workTime }</span> minut</Label>
       <Input 
@@ -61,7 +62,7 @@ const Settings = ({ workTime, changeWorkTime, breakTime, changeBreakTime, stopTi
         type="range" 
         min="10" 
         max="120" 
-        disabled={!stopTime}
+        disabled={!stop}
         value={ workTime } 
         onChange={e => changeWorkTime(e.target.value)} 
       />
@@ -71,12 +72,20 @@ const Settings = ({ workTime, changeWorkTime, breakTime, changeBreakTime, stopTi
         type="range" 
         min="1" 
         max="30"
-        disabled={!stopTime} 
+        disabled={!stop} 
         value={ breakTime } 
         onChange={e => changeBreakTime(e.target.value)} 
       />
     </SettingsDiv>
   );
+};
+
+Settings.propTypes = {
+  workTime: PropTypes.number.isRequired,
+  changeWorkTime: PropTypes.func.isRequired,
+  breakTime: PropTypes.number.isRequired,
+  changeBreakTime: PropTypes.func.isRequired,
+  stop: PropTypes.bool.isRequired
 };
 
 export default Settings;
